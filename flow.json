@@ -614,8 +614,8 @@
         "name": "binary_old",
         "icon": "dashboard",
         "order": 7,
-        "disabled": false,
-        "hidden": false
+        "disabled": true,
+        "hidden": true
     },
     {
         "id": "e17896f2.80a5d",
