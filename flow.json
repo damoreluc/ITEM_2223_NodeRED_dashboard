@@ -3,7 +3,7 @@
         "id": "ce7acae890c807bf",
         "type": "tab",
         "label": "Test git",
-        "disabled": false,
+        "disabled": true,
         "info": "",
         "env": []
     },
@@ -11,21 +11,21 @@
         "id": "41c275d.65e1c8c",
         "type": "tab",
         "label": "Flow 1",
-        "disabled": false,
+        "disabled": true,
         "info": ""
     },
     {
         "id": "1cd7cc33.b1cff4",
         "type": "tab",
         "label": "Esempi",
-        "disabled": false,
+        "disabled": true,
         "info": ""
     },
     {
         "id": "ce09026f.e98f",
         "type": "tab",
         "label": "Split pacchetto",
-        "disabled": false,
+        "disabled": true,
         "info": ""
     },
     {
@@ -53,7 +53,7 @@
         "id": "3fa4d8c1.789b58",
         "type": "tab",
         "label": "Flow 4",
-        "disabled": false,
+        "disabled": true,
         "info": ""
     },
     {
@@ -95,21 +95,21 @@
         "id": "559e4b7f.0a0044",
         "type": "tab",
         "label": "Flow 8",
-        "disabled": false,
+        "disabled": true,
         "info": ""
     },
     {
         "id": "5f07f6ab.6224a8",
         "type": "tab",
         "label": "Flow 5",
-        "disabled": false,
+        "disabled": true,
         "info": ""
     },
     {
         "id": "1dfbd57d.bb713b",
         "type": "tab",
         "label": "ESP32_LEDCPWM",
-        "disabled": false,
+        "disabled": true,
         "info": ""
     },
     {
