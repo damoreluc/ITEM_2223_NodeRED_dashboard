@@ -3,7 +3,7 @@
         "id": "ce7acae890c807bf",
         "type": "tab",
         "label": "Test git",
-        "disabled": true,
+        "disabled": false,
         "info": "",
         "env": []
     },
@@ -132,6 +132,14 @@
         "label": "MultiPacket_scope_FFT",
         "disabled": false,
         "info": "Assembla 4 payload consecutivi per ottenere un unico pacchetto.\n\nDa usare con ESP32 programmata col sorgente:\n\nESP32 DevKit Async MQTT big packet Planet02\n\n(Test ESP32-WROOM-32 DevKit Async MQTT client v2.0 with big packet)\n\nRef:\nhttps://www.html5rocks.com/en/tutorials/webgl/typed_arrays/\nhttps://stackoverflow.com/questions/8609289/convert-a-binary-nodejs-buffer-to-javascript-arraybuffer\nhttps://www.w3schools.com/ai/ai_chartjs.asp\n\n// aggiornamento dataset del grafico:\nhttps://www.chartjs.org/docs/latest/developers/updates.html"
+    },
+    {
+        "id": "4dc852e22b7643b0",
+        "type": "tab",
+        "label": "Flow 6",
+        "disabled": false,
+        "info": "",
+        "env": []
     },
     {
         "id": "6c259dd5.72f0d4",
@@ -439,8 +447,10 @@
         "broker": "item2122a.cloud.shiftr.io",
         "port": "1883",
         "clientid": "",
+        "autoConnect": true,
         "usetls": false,
         "compatmode": false,
+        "protocolVersion": 4,
         "keepalive": "60",
         "cleansession": true,
         "birthTopic": "",
@@ -996,6 +1006,26 @@
         "height": 1
     },
     {
+        "id": "d54c2fbb720e92b9",
+        "type": "ui_spacer",
+        "z": "4dc852e22b7643b0",
+        "name": "spacer",
+        "group": "63897fa5.43c4",
+        "order": 6,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "9fd1de41ac241935",
+        "type": "ui_spacer",
+        "z": "4dc852e22b7643b0",
+        "name": "spacer",
+        "group": "63897fa5.43c4",
+        "order": 8,
+        "width": 1,
+        "height": 1
+    },
+    {
         "id": "b4286eb1.847af",
         "type": "switch",
         "z": "6c259dd5.72f0d4",
@@ -1112,10 +1142,10 @@
         "crontab": "",
         "once": false,
         "onceDelay": 0.1,
-        "topic": "",
+        "topic": "timestamp",
         "payload": "",
         "payloadType": "date",
-        "x": 220,
+        "x": 260,
         "y": 120,
         "wires": [
             [
@@ -1393,7 +1423,7 @@
         "label": "Off/On",
         "tooltip": "",
         "group": "b9eb0937.738868",
-        "order": 4,
+        "order": 2,
         "width": 0,
         "height": 0,
         "passthru": true,
@@ -5012,9 +5042,9 @@
         "label": "Led Rosso",
         "tooltip": "",
         "group": "ed4f6f2d.cb71d",
-        "order": 0,
-        "width": "6",
-        "height": "1",
+        "order": 1,
+        "width": 6,
+        "height": 1,
         "passthru": true,
         "outs": "all",
         "topic": "DevKit123/led1Topic",
@@ -5073,9 +5103,9 @@
         "label": "Led Giallo",
         "tooltip": "",
         "group": "ed4f6f2d.cb71d",
-        "order": 0,
-        "width": "6",
-        "height": "1",
+        "order": 2,
+        "width": 6,
+        "height": 1,
         "passthru": true,
         "outs": "all",
         "topic": "DevKit123/led2Topic",
@@ -7825,5 +7855,156 @@
         "x": 550,
         "y": 600,
         "wires": []
+    },
+    {
+        "id": "f03345dc42025e26",
+        "type": "mqtt out",
+        "z": "4dc852e22b7643b0",
+        "name": "",
+        "topic": "",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "35a4e7d1.620608",
+        "x": 650,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "bae983f739ff6570",
+        "type": "ui_switch",
+        "z": "4dc852e22b7643b0",
+        "name": "",
+        "label": "Led rosso",
+        "tooltip": "Led rosso",
+        "group": "63897fa5.43c4",
+        "order": 5,
+        "width": 4,
+        "height": 1,
+        "passthru": false,
+        "decouple": "false",
+        "topic": "ESP32_base/redTopic",
+        "topicType": "str",
+        "style": "",
+        "onvalue": "1",
+        "onvalueType": "str",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "0",
+        "offvalueType": "str",
+        "officon": "",
+        "offcolor": "",
+        "animate": false,
+        "className": "",
+        "x": 420,
+        "y": 140,
+        "wires": [
+            [
+                "f03345dc42025e26",
+                "fa9ea45e71c3967a"
+            ]
+        ]
+    },
+    {
+        "id": "aaeb6b21898b16c6",
+        "type": "mqtt in",
+        "z": "4dc852e22b7643b0",
+        "name": "",
+        "topic": "ESP32_base/output",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "35a4e7d1.620608",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 310,
+        "y": 260,
+        "wires": [
+            [
+                "4470b41a7ec0bddc"
+            ]
+        ]
+    },
+    {
+        "id": "4470b41a7ec0bddc",
+        "type": "ui_text",
+        "z": "4dc852e22b7643b0",
+        "group": "63897fa5.43c4",
+        "order": 7,
+        "width": 5,
+        "height": 1,
+        "name": "",
+        "label": "Pulsante:",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 560,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "fa9ea45e71c3967a",
+        "type": "ui_led",
+        "z": "4dc852e22b7643b0",
+        "order": 9,
+        "group": "63897fa5.43c4",
+        "width": 0,
+        "height": 0,
+        "label": "Stato del led:",
+        "labelPlacement": "left",
+        "labelAlignment": "left",
+        "colorForValue": [
+            {
+                "color": "#808080",
+                "value": "0",
+                "valueType": "str"
+            },
+            {
+                "color": "#ff0000",
+                "value": "1",
+                "valueType": "str"
+            }
+        ],
+        "allowColorForValueInMessage": false,
+        "shape": "circle",
+        "showGlow": true,
+        "name": "",
+        "x": 710,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "b73e53d7b69ed1f8",
+        "type": "inject",
+        "z": "4dc852e22b7643b0",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "0",
+        "payloadType": "str",
+        "x": 150,
+        "y": 140,
+        "wires": [
+            [
+                "bae983f739ff6570"
+            ]
+        ]
     }
 ]
