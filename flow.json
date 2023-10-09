@@ -1192,7 +1192,7 @@
         "id": "110b7950e5c6767a",
         "type": "function",
         "z": "ce7acae890c807bf",
-        "name": "date formatter",
+        "name": "date formatterer",
         "func": "// Create a Date object from the payload\nvar date = new Date(msg.payload);\n// Change the payload to be a formatted Date string\nmsg.payload = date.toString();\n// Return the message so it can be sent on\nreturn msg;\n",
         "outputs": 1,
         "timeout": 0,
