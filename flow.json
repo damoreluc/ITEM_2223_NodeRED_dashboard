@@ -2,7 +2,15 @@
     {
         "id": "ce7acae890c807bf",
         "type": "tab",
-        "label": "Test git",
+        "label": "My first flow",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "e80dc1816e42972c",
+        "type": "tab",
+        "label": "MQTT messages",
         "disabled": false,
         "info": "",
         "env": []
@@ -137,6 +145,14 @@
         "id": "4dc852e22b7643b0",
         "type": "tab",
         "label": "Flow 6",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "23336cebd3587c7f",
+        "type": "tab",
+        "label": "Flow 7",
         "disabled": false,
         "info": "",
         "env": []
@@ -426,10 +442,13 @@
         "broker": "test.mosquitto.org",
         "port": "1883",
         "clientid": "",
+        "autoConnect": true,
         "usetls": false,
         "compatmode": false,
+        "protocolVersion": 4,
         "keepalive": "60",
         "cleansession": true,
+        "autoUnsubscribe": true,
         "birthTopic": "",
         "birthQos": "0",
         "birthPayload": "",
@@ -1125,7 +1144,7 @@
         ]
     },
     {
-        "id": "54c23b2587c2e21e",
+        "id": "c8df5d53a91c28f6",
         "type": "inject",
         "z": "ce7acae890c807bf",
         "name": "",
@@ -1142,19 +1161,19 @@
         "crontab": "",
         "once": false,
         "onceDelay": 0.1,
-        "topic": "timestamp",
+        "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 260,
-        "y": 120,
+        "x": 180,
+        "y": 160,
         "wires": [
             [
-                "44c3ee26ba3f23e5"
+                "110b7950e5c6767a"
             ]
         ]
     },
     {
-        "id": "44c3ee26ba3f23e5",
+        "id": "3c414338e3dc134a",
         "type": "debug",
         "z": "ce7acae890c807bf",
         "name": "debug 1",
@@ -1165,8 +1184,246 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 440,
-        "y": 120,
+        "x": 540,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "110b7950e5c6767a",
+        "type": "function",
+        "z": "ce7acae890c807bf",
+        "name": "date formatter",
+        "func": "// Create a Date object from the payload\nvar date = new Date(msg.payload);\n// Change the payload to be a formatted Date string\nmsg.payload = date.toString();\n// Return the message so it can be sent on\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 160,
+        "wires": [
+            [
+                "3c414338e3dc134a"
+            ]
+        ]
+    },
+    {
+        "id": "8a37312b93481a4f",
+        "type": "inject",
+        "z": "e80dc1816e42972c",
+        "name": "temperature",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "livingroom/temperature",
+        "payload": "22.5",
+        "payloadType": "num",
+        "x": 190,
+        "y": 60,
+        "wires": [
+            [
+                "293523a87aa34a42"
+            ]
+        ]
+    },
+    {
+        "id": "293523a87aa34a42",
+        "type": "mqtt out",
+        "z": "e80dc1816e42972c",
+        "name": "Mosquitto broker",
+        "topic": "",
+        "qos": "0",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "d220cbeb.3f2478",
+        "x": 430,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "c078e07c398a50c3",
+        "type": "mqtt in",
+        "z": "e80dc1816e42972c",
+        "name": "Mosquitto broker",
+        "topic": "livingroom/+",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "d220cbeb.3f2478",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 180,
+        "y": 380,
+        "wires": [
+            [
+                "7156ee50fd66d093"
+            ]
+        ]
+    },
+    {
+        "id": "a71e15588da4abcd",
+        "type": "debug",
+        "z": "e80dc1816e42972c",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 520,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "fd6d47e537c9f8a6",
+        "type": "inject",
+        "z": "e80dc1816e42972c",
+        "name": "humidity",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "livingroom/humidity",
+        "payload": "55",
+        "payloadType": "num",
+        "x": 180,
+        "y": 140,
+        "wires": [
+            [
+                "293523a87aa34a42"
+            ]
+        ]
+    },
+    {
+        "id": "57c818c2e2d1fdd8",
+        "type": "inject",
+        "z": "e80dc1816e42972c",
+        "name": "lighting",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "livingroom/lighting",
+        "payload": "Off",
+        "payloadType": "str",
+        "x": 170,
+        "y": 220,
+        "wires": [
+            [
+                "293523a87aa34a42"
+            ]
+        ]
+    },
+    {
+        "id": "7156ee50fd66d093",
+        "type": "switch",
+        "z": "e80dc1816e42972c",
+        "name": "demux",
+        "property": "topic",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "livingroom/temperature",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "livingroom/humidity",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "livingroom/lighting",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 3,
+        "x": 350,
+        "y": 380,
+        "wires": [
+            [
+                "a71e15588da4abcd"
+            ],
+            [
+                "d3649385604e90e9"
+            ],
+            [
+                "813a59b7d0e3ef8e"
+            ]
+        ]
+    },
+    {
+        "id": "d3649385604e90e9",
+        "type": "debug",
+        "z": "e80dc1816e42972c",
+        "name": "debug 3",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 520,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "813a59b7d0e3ef8e",
+        "type": "debug",
+        "z": "e80dc1816e42972c",
+        "name": "debug 4",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 520,
+        "y": 420,
         "wires": []
     },
     {
